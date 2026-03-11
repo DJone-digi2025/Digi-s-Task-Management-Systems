@@ -552,16 +552,6 @@ res.send("Task marked complete")
 
 })
 
-const path = require("path")
-
-const frontendPath = path.join(__dirname, "../frontend/dist")
-
-app.use(express.static(frontendPath))
-
-app.get(/.*/, (req,res)=>{
-res.sendFile(path.join(frontendPath,"index.html"))
-})
-
 app.listen(5000,()=>{
 console.log("Server running on port 5000")
 })

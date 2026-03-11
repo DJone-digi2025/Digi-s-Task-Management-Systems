@@ -1,6 +1,7 @@
 import {useEffect,useState} from "react"
 import axios from "axios"
 import {Link} from "react-router-dom"
+import API from "../api"
 
 const hoverEffect = e => {
 e.currentTarget.style.transform = "translateY(-3px)"
@@ -18,7 +19,7 @@ const [team,setTeam] = useState([])
 
 useEffect(()=>{
 
-axios.get("/team")
+axios.get(API + "/team")
 .then(res=>{
 setTeam(res.data || [])
 })

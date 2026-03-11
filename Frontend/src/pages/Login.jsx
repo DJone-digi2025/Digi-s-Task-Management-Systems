@@ -1,6 +1,7 @@
 import {useState} from "react"
 import {useNavigate} from "react-router-dom"
 import axios from "axios"
+import API from "../api"
 
 export default function Login(){
 
@@ -10,7 +11,7 @@ const nav = useNavigate()
 
 function login(){
 
-axios.post("/login",{name,password})
+axios.post(API + "/login",{name,password})
 .then(res=>{
 
 if(res.data.role === "manager"){

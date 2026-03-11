@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react"
 import axios from "axios"
 import TopBar from "../components/TopBar"
+import API from "../api"
 
 export default function Manager(){
 
@@ -38,7 +39,7 @@ const scrollRef = useRef(null)
 
 function loadTasks(){
 
-axios.get("/alltasks")
+axios.get(API + "/alltasks")
 .then(res=>{
 setActive(res.data.active || [])
 setEvaluation(res.data.evaluation || [])
@@ -51,19 +52,19 @@ useEffect(()=>{
 
 loadTasks()
 
-axios.get("/clients").then(res=>{
+axios.get(API + "/clients").then(res=>{
 setClientList(res.data)
 })
 
-axios.get("/team").then(res=>{
+axios.get(API + "/team").then(res=>{
 setTeamList(res.data)
 })
 
-axios.get("/contentTypes").then(res=>{
+axios.get(API + "/contentTypes").then(res=>{
 setTypeList(res.data)
 })
 
-axios.get("/stages").then(res=>{
+axios.get(API + "/stages").then(res=>{
 setStageList(res.data)
 })
 
@@ -101,7 +102,7 @@ return row && row[index] ? row[index] : ""
 
 function saveManagerComment(taskId){
 
-axios.post("/managerComment",{
+axios.post(API + "/managerComment",{
 taskId,
 comment:comments[taskId] || "",
 status:"ASSIGNED"
@@ -115,7 +116,7 @@ loadTasks()
 
 function createTask(){
 
-axios.post("/createTask",{
+axios.post(API + "/createTask",{
 client,
 contentType,
 stage,
@@ -139,7 +140,7 @@ alert("Failed to create task")
 
 function evaluateTask(taskId){
 
-axios.post("/evaluateTask",{taskId})
+axios.post(API + "/evaluateTask",{taskId})
 .then(()=>{
 
 // remove immediately from UI

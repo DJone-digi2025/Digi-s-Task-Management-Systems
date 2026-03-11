@@ -2,6 +2,7 @@ import {useEffect,useState} from "react"
 import axios from "axios"
 import {useParams} from "react-router-dom"
 import TopBar from "../components/TopBar"
+import API from "../api"
 
 export default function Team(){
 
@@ -12,7 +13,7 @@ const [comments,setComments] = useState({})
 
 useEffect(()=>{
 
-axios.get("/tasks/"+name)
+axios.get(API + "/tasks/"+name)
 .then(res=>{
 
 setTasks(res.data)
@@ -33,7 +34,7 @@ setComments(existing)
 
 function submitComment(taskId){
 
-axios.post("/employeeComment",{
+axios.post(API + "/employeeComment",{
 taskId,
 comment:comments[taskId]
 })
@@ -44,7 +45,7 @@ comment:comments[taskId]
 
 function submitTask(taskId){
 
-axios.post("/submitTask",{taskId})
+axios.post(API + "/submitTask",{taskId})
 .then(()=>{
 
 setTasks(tasks.map(t=>{

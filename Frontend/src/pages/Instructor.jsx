@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import TopBar from "../components/TopBar"
+import API from "../api"
 
 import {
 BarChart,
@@ -31,7 +32,7 @@ params.date = date
 params.month = month
 }
 
-axios.get("/analytics",{ params })
+axios.get(API + "/analytics",{ params })
 .then(res=>{
 setData(res.data)
 })

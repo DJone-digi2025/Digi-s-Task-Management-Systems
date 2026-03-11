@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  font-family: "Times New Roman", Times, serif;
+}
+
+
+/* ---------- COMPONENT STYLES ---------- */
+
+@layer components{
+
+table{
+  @apply w-full border-collapse text-sm;
+}
+
+thead{
+  @apply bg-gray-100;
+}
+
+th{
+  @apply px-3 py-2 font-semibold border-b-2 border-gray-200;
+}
+
+td{
+  @apply px-3 py-2 border-b border-gray-100;
+}
+
+tr:hover{
+  @apply bg-blue-50;
+}
+
+}
+
+
+/* ---------- FORM STYLES ---------- */
+
+@layer components{
+
+input,select{
+  @apply border border-gray-300 rounded px-2 py-1;
+}
+
+button{
+  @apply transition-all duration-150;
+}
+
+button:hover{
+  transform: translateY(-1px);
+}
+
+}

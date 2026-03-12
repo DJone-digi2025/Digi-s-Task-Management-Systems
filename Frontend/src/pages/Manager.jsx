@@ -44,6 +44,14 @@ axios.get(API + "/alltasks")
 setActive(res.data.active || [])
 setEvaluation(res.data.evaluation || [])
 setCompleted(res.data.completed || [])
+const existing = {}
+
+;(res.data.evaluation || []).forEach(t=>{
+existing[t[0]] = t[12] || ""
+})
+
+setComments(existing)
+
 })
 
 }
